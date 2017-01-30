@@ -14,13 +14,38 @@
       "source": "organic-express-response",
       "reactOn": [
         "ExpressServer",
-        "ApiRoutesReady"
+        "ApiRoutesReady",
+        "SiteRoutesReady"
       ]
     },
     "organic-express-static": {
       "source": "organic-express-static",
       "reactOn": "ExpressServer",
       "mount": "@client.public"
+    },
+    "organic-site-routes": {
+      "source": "organic-express-routes",
+      "reactOn": [
+        "ExpressServer",
+        "ApiRoutesReady"
+      ],
+      "pattern": "/**/*.js",
+      "path": "client/pages",
+      "helpers": "client/page-helpers",
+      "emitReady": "SiteRoutesReady",
+      "exclude": "_layout"
+    },
+    "organic-static-pages": {
+      "source": "organic-express-staticpages",
+      "reactOn": [
+        "ExpressServer",
+        "ApiRoutesReady",
+        "SiteRoutesReady"
+      ],
+      "pattern": "/**/*.ejs",
+      "path": "client/pages",
+      "emitReady": "StaticPagesReady",
+      "exclude": "_layout"
     }
   },
   "membrane": {
@@ -49,12 +74,18 @@
         "server/http/responders/default"
       ],
       "expressSetupDoneOnce": [
-        "ExpressServer",
-        "ApiRoutesReady"
+        "ApiRoutesReady",
+        "SiteRoutesReady",
+        "StaticPagesReady"
       ],
       "interceptors": [
         "server/http/params"
-      ]
+      ],
+      "views": "client/pages",
+      "viewEngine": {
+        "ext": "ejs",
+        "name": "ejs"
+      }
     },
     "organic-mongoose": {
       "source": "organic-mongoose",

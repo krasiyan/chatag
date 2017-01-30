@@ -43,7 +43,9 @@
     "glob-stream": "^5.2.0",
     "gulp-less": "^3.0.5",
     "gulp-less-watcher": "^0.5.0",
-    "less-plugin-autoprefix": "^1.5.1"
+    "less-plugin-autoprefix": "^1.5.1",
+    "ejs": "^2.3.3",
+    "organic-express-staticpages": "0.0.3"
   },
   "devDependencies": {
     "angelscripts-help": "0.2.0",
@@ -73,6 +75,7 @@
     "devtools-deploy": "0.2.2",
     "devtools-client": "0.2.2",
     "devtools-webpack": "0.2.2",
-    "devtools-less": "0.2.2"
+    "devtools-less": "0.2.2",
+    "ejs-pages": "0.1.0"
   }
 }

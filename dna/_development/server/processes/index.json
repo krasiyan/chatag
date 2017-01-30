@@ -5,6 +5,12 @@
     },
     "organic-api-routes": {
       "log": true
+    },
+    "organic-site-routes": {
+      "log": true
+    },
+    "organic-static-pages": {
+      "log": true
     }
   },
   "membrane": {
