@@ -4,7 +4,7 @@ module.exports = function (angel) {
     var parallel = require('organic-stem-devtools/lib/parallel-exec')
     parallel([
       'node ./node_modules/.bin/angel watch',
-      'node ./index.js'
+      'node ./node_modules/.bin/nodemon ./index.js'
     ])
   })
 
@@ -13,7 +13,7 @@ module.exports = function (angel) {
     var parallel = require('organic-stem-devtools/lib/parallel-exec')
     parallel([
       'node ./node_modules/.bin/angel watch "' + angel.cmdData.part + '"',
-      'node ./index.js'
+      'node ./node_modules/.bin/nodemon ./index.js'
     ])
   })
 }
