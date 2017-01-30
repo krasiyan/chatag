@@ -35,7 +35,7 @@ test.startServer = function (next) {
   test.initTestEnv(function (err) {
     if (err) return next(err)
     var cell = variables.cell = require('../../server/start')()
-    cell.plasma.on(['ApiRoutesReady'], function (err) {
+    cell.plasma.on(['ApiRoutesReady', 'SiteRoutesReady'], function (err) {
       if (err instanceof Error) return next(err)
       next && next()
     })
