@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import Main from './components/Main';
 
 class App extends Component {
   render() {
@@ -10,9 +11,7 @@ class App extends Component {
           <Navbar/>
         </header>
         <main>
-          <div className="container">
-            chatag
-          </div>
+          <Main/>
         </main>
         <footer className="page-footer">
           <Footer/>
