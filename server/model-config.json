@@ -12,5 +12,9 @@
       "../common/mixins",
       "./mixins"
     ]
+  },
+  "tag": {
+    "dataSource": null,
+    "public": true
   }
 }
