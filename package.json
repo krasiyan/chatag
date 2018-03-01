@@ -19,6 +19,7 @@
     "compression": "^1.0.3",
     "cors": "^2.5.2",
     "create-react-app": "1.5.2",
+    "font-awesome": "4.7.0",
     "helmet": "^3.10.0",
     "jquery": "3.3.1",
     "loopback": "^3.0.0",
@@ -26,6 +27,7 @@
     "loopback-component-explorer": "^5.0.0",
     "loopback-connector-mongodb": "1.18.1",
     "materialize-css": "0.100.2",
+    "react-fontawesome": "1.6.1",
     "serve-favicon": "^2.0.1",
     "strong-error-handler": "^2.0.0"
   },
