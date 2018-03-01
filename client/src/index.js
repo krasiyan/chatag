@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize.min.js';
@@ -9,5 +10,9 @@ import './Chatag.css';
 import Chatag from './Chatag';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<Chatag />, document.body);
+ReactDOM.render(
+<BrowserRouter>
+  <Chatag />
+</BrowserRouter>
+, document.body);
 registerServiceWorker();

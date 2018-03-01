@@ -1,30 +1,15 @@
 import React, { Component } from 'react';
-import GoogleMapReact from 'google-map-react';
-
-const style = {
-  position: 'absolute',
-  width: '100%',
-  height: '100%',
-};
+import { Switch, Route } from 'react-router-dom';
+import Map from './Map';
+import About from './About';
 
 class Main extends Component {
-  static defaultProps = {
-    center: {
-      lat: 42.2020702,
-      lng: 25.3248541
-    },
-    zoom: 15
-  };
-
   render () {
     return (
-      <GoogleMapReact
-        className="map"
-        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_API_KEY }}
-        defaultCenter={this.props.center}
-        defaultZoom={this.props.zoom}
-        style={style}>
-      </GoogleMapReact>
+      <Switch>
+        <Route exact path='/' component={Map} />
+        <Route exact path='/about' component={About} />
+      </Switch>
     )
   }
 }
