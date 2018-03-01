@@ -10,3 +10,7 @@
 main {
   flex: 1 0 auto;
 }
+
+nav, .page-footer {
+  background-color: #039be5;
+}
