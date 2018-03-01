@@ -22,16 +22,44 @@
 ## Development tips
 
 
-Start the basic API server and the client's development server:
+Start the API server and the client's development server:
 
     $ npm run develop
 
 This starts two separate HTTP servers:
 
-- `http://127.0.0.1:3000` - The loopback API server
+- `http://127.0.0.1:3000` - The loopback API server (serving the pre-build client)
   - `http://127.0.0.1:3000/status` - The loopback status page
   - `http://127.0.0.1:3000/explorer` - The loopback API expolorer
 - `http://127.0.0.1:3001` - The development React server
+
+Run the API server only:
+
+    $ npm run develop:server
+
+Run the React development server only:
+
+    $ npm run develop:client
+
+Built the React client app, which will be served under `http://127.0.0.1:3000/` (if the API server is running):
+
+    $ npm run build:client
+
+Run the full test pipeline:
+
+    $ npm run test
+
+Run code linter only:
+
+    $ npm run test:lint
+
+Run the client tests only:
+
+    $ npm run test:client
+
+Run the NSP security tests only:
+
+    $ npm run test:posttest
 
 ## Server management
 
