@@ -14,5 +14,5 @@ ReactDOM.render(
 <BrowserRouter>
   <Chatag />
 </BrowserRouter>
-, document.body);
+, document.getElementById('chatag'));
 registerServiceWorker();
