@@ -6,9 +6,12 @@
     "node": ">=4"
   },
   "scripts": {
-    "lint": "eslint .",
-    "start": "node .",
-    "posttest": "npm run lint && nsp check"
+    "develop": "run-p -l develop:*",
+    "develop:server": "node .",
+    "develop:client": "npm start --prefix client",
+    "test": "run-s -l test:*",
+    "test:lint": "eslint .",
+    "test:posttest": "npm run lint && nsp check"
   },
   "dependencies": {
     "compression": "^1.0.3",
@@ -25,6 +28,8 @@
   "devDependencies": {
     "eslint": "^3.17.1",
     "eslint-config-loopback": "^8.0.0",
+    "nodemon": "1.17.1",
+    "npm-run-all": "4.1.2",
     "nsp": "^2.1.0"
   },
   "repository": {
