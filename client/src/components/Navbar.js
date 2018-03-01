@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import FontAwesome from 'react-fontawesome';
+import { Link } from 'react-router-dom';
 import $ from 'jquery';
 
 class Navbar extends Component {
@@ -12,24 +13,27 @@ class Navbar extends Component {
       <nav>
         <div className="container">
           <div className="nav-wrapper">
-            <a href="#!" className="brand-logo">Chatag</a>
-            <a href="#" data-activates="mobile-demo" className="button-collapse">
+            <a href="/" className="brand-logo">
+              Chatag&nbsp;
+              <FontAwesome name="map-marker" />
+            </a>
+            <a href="/" data-activates="mobile-demo" className="button-collapse">
               <FontAwesome name='bars' />
             </a>
             <ul id="nav-main" className="right hide-on-med-and-down">
               <li>
-                <a href="#">
-                  <FontAwesome name='question' />
+                <Link to="/about">
+                  <FontAwesome name="question" />
                   &nbsp;About
-                </a>
+                </Link>
               </li>
             </ul>
             <ul className="side-nav" id="mobile-demo">
               <li>
-                <a href="#">
-                  <FontAwesome name='question' />
+                <Link to="/about">
+                  <FontAwesome name="question" />
                   &nbsp;About
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
