@@ -7,7 +7,7 @@
   },
   "scripts": {
     "develop": "run-p -l develop:*",
-    "develop:server": "node .",
+    "develop:server": "nodemon .",
     "develop:client": "npm start --prefix client",
     "build:client": "npm run build --prefix client",
     "test": "run-s -l test:*",
