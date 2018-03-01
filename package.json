@@ -11,7 +11,8 @@
     "develop:client": "npm start --prefix client",
     "test": "run-s -l test:*",
     "test:lint": "eslint .",
-    "test:posttest": "npm run lint && nsp check"
+    "test:client": "npm test --prefix client",
+    "test:posttest": "npm run test:lint && nsp check"
   },
   "dependencies": {
     "compression": "^1.0.3",
