@@ -9,6 +9,7 @@
     "develop": "run-p -l develop:*",
     "develop:server": "node .",
     "develop:client": "npm start --prefix client",
+    "build:client": "npm run build --prefix client",
     "test": "run-s -l test:*",
     "test:lint": "eslint .",
     "test:client": "npm test --prefix client",
