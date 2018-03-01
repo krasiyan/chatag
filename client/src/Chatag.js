@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
-import './Chatag.css';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 class App extends Component {
   render() {
     return (
-      <div className="Chatag">
-        <Navbar/>
-        <p className="Chatag-intro">
-          chatag
-        </p>
+      <div id="root">
+        <header>
+          <Navbar/>
+        </header>
+        <main>
+          <div className="container">
+            chatag
+          </div>
+        </main>
+        <footer className="page-footer">
+          <Footer/>
+        </footer>
       </div>
     );
   }

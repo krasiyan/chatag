@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import FontAwesome from 'react-fontawesome';
 import $ from 'jquery';
 
-class Navbar extends Component{
+class Navbar extends Component {
   componentDidMount () {
     $(".button-collapse").sideNav();
   }
 
   render(){
     return (
-      <div>
-        <nav>
+      <nav>
+        <div className="container">
           <div className="nav-wrapper">
             <a href="#!" className="brand-logo">Chatag</a>
             <a href="#" data-activates="mobile-demo" className="button-collapse">
@@ -33,8 +33,8 @@ class Navbar extends Component{
               </li>
             </ul>
           </div>
-        </nav>
-      </div>
+        </div>
+      </nav>
     )
   }
 }
