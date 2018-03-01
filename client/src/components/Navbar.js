@@ -13,13 +13,13 @@ class Navbar extends Component {
       <nav>
         <div className="container">
           <div className="nav-wrapper">
-            <a href="/" className="brand-logo">
+            <Link to="/" className="brand-logo">
               Chatag&nbsp;
               <FontAwesome name="map-marker" />
-            </a>
-            <a href="/" data-activates="mobile-demo" className="button-collapse">
+            </Link>
+            <Link to="/" data-activates="mobile-demo" className="button-collapse">
               <FontAwesome name='bars' />
-            </a>
+            </Link>
             <ul id="nav-main" className="right hide-on-med-and-down">
               <li>
                 <Link to="/about">
