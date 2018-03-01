@@ -18,4 +18,4 @@ class Footer extends Component {
   }
 }
 
-export default Navbar;
+export default Footer;
