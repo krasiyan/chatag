@@ -1,0 +1,17 @@
+#root {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  position: relative;
+  flex: 1 0 auto;
+}
+
+nav, .page-footer {
+  background-color: #039be5;
+}

@@ -2,10 +2,16 @@
 
 var loopback = require('loopback');
 var boot = require('loopback-boot');
+var path = require('path');
 
 var app = module.exports = loopback();
 
 app.start = function() {
+  var staticFolder = path.dirname(
+    path.resolve(__dirname, '..', app.get('indexFile'))
+  );
+  app.use(loopback.static(staticFolder));
+
   // start the web server
   return app.listen(function() {
     app.emit('started');
