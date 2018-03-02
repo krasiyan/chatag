@@ -6,6 +6,7 @@
     "node": ">=4"
   },
   "scripts": {
+    "postinstall": "cd client && npm i",
     "develop": "run-p -l develop:*",
     "develop:server": "nodemon .",
     "develop:client": "npm start --prefix client",
