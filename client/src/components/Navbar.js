@@ -5,7 +5,7 @@ import $ from 'jquery';
 
 class Navbar extends Component {
   componentDidMount () {
-    $(".button-collapse").sideNav();
+    if ($(".button-collapse").sideNav) $(".button-collapse").sideNav();
   }
 
   render(){
