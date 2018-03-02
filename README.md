@@ -1,5 +1,8 @@
 # Chatag
 
+- Develop CI [ ![Codeship Status for krasiyan/chatag#develop](https://app.codeship.com/projects/40a62ad0-004d-0136-d6b3-5a0245e77f67/status?branch=develop)](https://app.codeship.com/projects/279825)
+- Master CI [ ![Codeship Status for krasiyan/chatag#master](https://app.codeship.com/projects/40a62ad0-004d-0136-d6b3-5a0245e77f67/status?branch=master)](https://app.codeship.com/projects/279825)
+
 ## Prerequisites
 
 - git
