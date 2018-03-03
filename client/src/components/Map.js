@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
+import Tag from './Tag';
 
 const style = {
   position: 'absolute',
@@ -24,6 +25,11 @@ class Map extends Component {
         defaultCenter={this.props.center}
         defaultZoom={this.props.zoom}
         style={style}>
+        <Tag
+          message="My first pin message"
+          lat={42.2020702}
+          lng={25.3248541}
+        />
       </GoogleMapReact>
     )
   }
