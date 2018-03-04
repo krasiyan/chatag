@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import Tag from './Tag';
+import axios from 'axios';
 
 const style = {
   position: 'absolute',
@@ -17,7 +18,33 @@ class Map extends Component {
     zoom: 15
   };
 
+  constructor () {
+    super()
+    this.state = {
+      tags: []
+    };
+  };
+
+  componentDidMount() {
+    axios.get(`http://localhost:3000/api/tags`)
+      .then(res => {
+        this.setState({
+          tags: (res.data || [])
+        });
+      });
+  };
+
   render () {
+    var renderedTags = this.state.tags.map((tag) => {
+      return (
+        <Tag
+          message={tag.message}
+          lat={tag.location.lat}
+          lng={tag.location.lng}
+        />
+      )
+    })
+
     return (
       <GoogleMapReact
         className="map"
@@ -25,11 +52,7 @@ class Map extends Component {
         defaultCenter={this.props.center}
         defaultZoom={this.props.zoom}
         style={style}>
-        <Tag
-          message="My first pin message"
-          lat={42.2020702}
-          lng={25.3248541}
-        />
+        {renderedTags}
       </GoogleMapReact>
     )
   }
