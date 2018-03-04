@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import Tag from './Tag';
-import axios from 'axios';
+import API from '../api';
 
 const style = {
   position: 'absolute',
@@ -26,7 +26,7 @@ class Map extends Component {
   };
 
   componentDidMount() {
-    axios.get(`http://localhost:3000/api/tags`)
+    API.get(`/api/tags`)
       .then(res => {
         this.setState({
           tags: (res.data || [])
@@ -38,6 +38,7 @@ class Map extends Component {
     var renderedTags = this.state.tags.map((tag) => {
       return (
         <Tag
+          key={tag.id}
           message={tag.message}
           lat={tag.location.lat}
           lng={tag.location.lng}
