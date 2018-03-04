@@ -7,6 +7,7 @@
   },
   "scripts": {
     "postinstall": "cd client && npm i",
+    "seed": "node ./scripts/seed.js",
     "develop": "run-p -l develop:*",
     "develop:server": "nodemon .",
     "develop:client": "npm start --prefix client",
