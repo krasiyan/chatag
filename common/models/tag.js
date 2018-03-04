@@ -6,6 +6,6 @@ module.exports = function(Tag) {
     description: 'Delete all matching records',
     accessType: 'WRITE',
     accepts: {arg: 'where', type: 'object', description: 'filter.where object'},
-    http: {verb: 'del', path: '/'}
+    http: {verb: 'del', path: '/'},
   });
 };
