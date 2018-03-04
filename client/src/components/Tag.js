@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import FontAwesome from 'react-fontawesome';
 
 class Tag extends Component {
-  constructor(props) {
-  super(props);
-  }
   render () {
     return (
       <div style={{
