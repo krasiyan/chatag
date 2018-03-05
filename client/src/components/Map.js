@@ -56,7 +56,6 @@ class Map extends Component {
 
   handleTagCreation(tag) {
     delete tag.id
-    tag.createdAt = new Date()
     API.post(`/api/tags`, tag).then(res => {
       var newTag = Object.assign(tag, {
         id: res.id
