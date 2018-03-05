@@ -21,8 +21,12 @@ class Map extends Component {
   constructor () {
     super()
     this.state = {
-      tags: []
+      tags: [],
+      tagCreationInProgress: false
     };
+
+    this.handleMapClick = this.handleMapClick.bind(this);
+    this.handleTagCreation = this.handleTagCreation.bind(this);
   };
 
   componentDidMount() {
@@ -34,6 +38,25 @@ class Map extends Component {
       });
   };
 
+  handleMapClick(e) {
+    if (this.state.tagCreationInProgress) return
+    this.setState((state) => {
+      state.tagCreationInProgress = true
+      return state.tags.push({
+        id: 'new',
+        message: '',
+        location: {
+          lat: e.lat,
+          lng: e.lng,
+        }
+      });
+    });
+  };
+
+  handleTagCreation(e) {
+    console.log('created')
+  }
+
   render () {
     var renderedTags = this.state.tags.map((tag) => {
       return (
@@ -42,6 +65,7 @@ class Map extends Component {
           message={tag.message}
           lat={tag.location.lat}
           lng={tag.location.lng}
+          handleTagCreation={this.handleTagCreation}
         />
       )
     })
@@ -52,7 +76,8 @@ class Map extends Component {
         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_API_KEY }}
         defaultCenter={this.props.center}
         defaultZoom={this.props.zoom}
-        style={style}>
+        style={style}
+        onClick={this.handleMapClick}>
         {renderedTags}
       </GoogleMapReact>
     )
