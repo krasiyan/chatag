@@ -85,6 +85,7 @@ class Map extends Component {
           id={tag.id}
           message={tag.message}
           location={tag.location}
+          createdAt={tag.createdAt}
           lat={tag.location.lat}
           lng={tag.location.lng}
           handleTagCreation={this.handleTagCreation}

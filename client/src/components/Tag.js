@@ -8,7 +8,8 @@ class Tag extends Component {
     this.state = {
       id: props.id,
       message: props.message,
-      location: props.location
+      location: props.location,
+      createdAt: props.createdAt
     };
 
     this.handleTagMessageChange = this.handleTagMessageChange.bind(this);
@@ -39,7 +40,7 @@ class Tag extends Component {
           </div>
         )
       } else {
-        return this.state.message
+        return `${this.state.message} @ ${this.state.createdAt}`
       }
     }
 
