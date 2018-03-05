@@ -54,18 +54,20 @@ class Map extends Component {
     });
   };
 
-  // todo: api call
   handleTagCreation(tag) {
-    this.setState((state) => {
-      var newTag = Object.assign({}, tag, {
-        id: new Date().getTime()
+    delete tag.id
+    tag.createdAt = new Date()
+    API.post(`/api/tags`, tag).then(res => {
+      var newTag = Object.assign(tag, {
+        id: res.id
       })
-      state.tags.push(newTag);
-      state.tagBeingCreated = null;
-      return state
-    });
 
-    console.log('creation');
+      this.setState((state) => {
+        state.tags.push(newTag);
+        state.tagBeingCreated = null;
+        return state
+      });
+    });
   }
 
   handleTagRemoval() {
