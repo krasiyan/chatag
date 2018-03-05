@@ -27,7 +27,7 @@ class Map extends Component {
 
     this.handleMapClick = this.handleMapClick.bind(this);
     this.handleTagCreation = this.handleTagCreation.bind(this);
-    this.handleTagRemoval = this.handleTagRemoval.bind(this);
+    this.handleTagCancelation = this.handleTagCancelation.bind(this);
   };
 
   componentDidMount() {
@@ -67,9 +67,8 @@ class Map extends Component {
     });
   }
 
-  handleTagRemoval() {
+  handleTagCancelation() {
     this.setState({ tagBeingCreated: null });
-    console.log('removal');
   }
 
   render () {
@@ -84,7 +83,7 @@ class Map extends Component {
           lng={tag.location.lng}
           tag={tag}
           handleTagCreation={this.handleTagCreation}
-          handleTagRemoval={this.handleTagRemoval}
+          handleTagCancelation={this.handleTagCancelation}
         />
       )
     })

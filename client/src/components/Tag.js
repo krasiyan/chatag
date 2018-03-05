@@ -9,7 +9,7 @@ class Tag extends Component {
 
     this.handleTagMessageChange = this.handleTagMessageChange.bind(this);
     this.handleTagCreation = this.handleTagCreation.bind(this);
-    this.handleTagRemoval = this.handleTagRemoval.bind(this);
+    this.handleTagCancelation = this.handleTagCancelation.bind(this);
   };
 
   handleTagMessageChange(event) {
@@ -20,8 +20,8 @@ class Tag extends Component {
     this.props.handleTagCreation(this.state);
   };
 
-  handleTagRemoval() {
-    this.props.handleTagRemoval();
+  handleTagCancelation() {
+    this.props.handleTagCancelation();
   };
 
   render () {
@@ -31,7 +31,7 @@ class Tag extends Component {
           <div>
             <textarea value={this.state.message} onChange={this.handleTagMessageChange} />
             <button onClick={this.handleTagCreation}>Tag!</button>
-            <button onClick={this.handleTagRemoval}>X</button>
+            <button onClick={this.handleTagCancelation}>X</button>
           </div>
         )
       } else {
