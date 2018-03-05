@@ -1,5 +1,9 @@
 'use strict';
 
+require('dotenv').config();
+// fallback to development if not defined otherwise
+if (!process.env.NODE_ENV) process.env.NODE_ENV = 'development';
+
 var loopback = require('loopback');
 var boot = require('loopback-boot');
 var path = require('path');

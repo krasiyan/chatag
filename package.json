@@ -7,6 +7,7 @@
   },
   "scripts": {
     "postinstall": "cd client && npm i",
+    "seed": "node ./scripts/seed.js",
     "develop": "run-p -l develop:*",
     "develop:server": "nodemon .",
     "develop:client": "npm start --prefix client",
@@ -19,6 +20,7 @@
   "dependencies": {
     "compression": "^1.0.3",
     "cors": "^2.5.2",
+    "dotenv": "5.0.1",
     "helmet": "^3.10.0",
     "loopback": "^3.0.0",
     "loopback-boot": "^2.6.5",

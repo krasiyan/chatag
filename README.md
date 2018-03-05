@@ -18,6 +18,8 @@
     $ cd ./chatag
     $ npm i
     $ echo REACT_APP_GOOGLE_API_KEY={{YOUR_API_KEY}} > client/.env.development.local
+    $ cp .env.sample .env
+    $ npm run seed
 
 ## Online resources
 
