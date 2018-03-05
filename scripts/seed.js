@@ -1,9 +1,11 @@
+'use strict';
+
 var path = require('path');
 
 var app = require(path.resolve(__dirname, '../server/server'));
 var ds = app.dataSources.mongodb;
 
-ds.automigrate('tag', function (err) {
+ds.automigrate('tag', function(err) {
   if (err) throw err;
 
   var tags = [
@@ -11,7 +13,7 @@ ds.automigrate('tag', function (err) {
       message: 'san francisco',
       location: {
         lat: 37.7749,
-        lng: 122.4194
+        lng: 122.4194,
       },
       createdAt: new Date(),
     },
@@ -19,7 +21,7 @@ ds.automigrate('tag', function (err) {
       message: 'sofia',
       location: {
         lat: 42.6977,
-        lng: 23.3219
+        lng: 23.3219,
       },
       createdAt: new Date(),
     },
@@ -27,7 +29,7 @@ ds.automigrate('tag', function (err) {
       message: 'pisa',
       location: {
         lat: 43.7228,
-        lng: 10.4017
+        lng: 10.4017,
       },
       createdAt: new Date(),
     },
@@ -35,7 +37,7 @@ ds.automigrate('tag', function (err) {
       message: 'florence',
       location: {
         lat: 43.7696,
-        lng: 11.2558
+        lng: 11.2558,
       },
       createdAt: new Date(),
     },
@@ -43,7 +45,7 @@ ds.automigrate('tag', function (err) {
       message: 'varna',
       location: {
         lat: 43.2141,
-        lng: 27.9147
+        lng: 27.9147,
       },
       createdAt: new Date(),
     },
@@ -51,7 +53,7 @@ ds.automigrate('tag', function (err) {
       message: 'munich',
       location: {
         lat: 48.1351,
-        lng: 11.5820
+        lng: 11.5820,
       },
       createdAt: new Date(),
     },
@@ -59,7 +61,7 @@ ds.automigrate('tag', function (err) {
       message: 'frankfurt',
       location: {
         lat: 50.1109,
-        lng: 8.6821
+        lng: 8.6821,
       },
       createdAt: new Date(),
     },
