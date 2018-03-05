@@ -22,11 +22,12 @@ class Map extends Component {
     super()
     this.state = {
       tags: [],
-      tagCreationInProgress: false
+      tagBeingCreated: null
     };
 
     this.handleMapClick = this.handleMapClick.bind(this);
     this.handleTagCreation = this.handleTagCreation.bind(this);
+    this.handleTagRemoval = this.handleTagRemoval.bind(this);
   };
 
   componentDidMount() {
@@ -39,33 +40,54 @@ class Map extends Component {
   };
 
   handleMapClick(e) {
-    if (this.state.tagCreationInProgress) return
-    this.setState((state) => {
-      state.tagCreationInProgress = true
-      return state.tags.push({
+    if (this.state.tagBeingCreated) return
+
+    this.setState({
+      tagBeingCreated: {
         id: 'new',
         message: '',
         location: {
           lat: e.lat,
           lng: e.lng,
         }
-      });
+      }
     });
   };
 
-  handleTagCreation(e) {
-    console.log('created')
+  // todo: api call
+  handleTagCreation(tag) {
+    this.setState((state) => {
+      var newTag = Object.assign({}, tag, {
+        id: new Date().getTime()
+      })
+      state.tags.push(newTag);
+      state.tagBeingCreated = null;
+      return state
+    });
+
+    console.log('creation');
+  }
+
+  handleTagRemoval() {
+    this.setState({ tagBeingCreated: null });
+    console.log('removal');
   }
 
   render () {
-    var renderedTags = this.state.tags.map((tag) => {
+    var tags = this.state.tags
+    if (this.state.tagBeingCreated) tags = tags.concat(this.state.tagBeingCreated)
+
+    var renderedTags = tags.map((tag) => {
       return (
         <Tag
           key={tag.id}
+          id={tag.id}
           message={tag.message}
+          location={tag.location}
           lat={tag.location.lat}
           lng={tag.location.lng}
           handleTagCreation={this.handleTagCreation}
+          handleTagRemoval={this.handleTagRemoval}
         />
       )
     })
