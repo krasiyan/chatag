@@ -56,15 +56,19 @@ class Map extends Component {
 
   handleTagCreation(tag) {
     delete tag.id
-    API.post(`/api/tags`, tag).then(res => {
-      var newTag = Object.assign(tag, res.data)
+    API.post(`/api/tags`, tag)
+      .then(res => {
+        var newTag = Object.assign(tag, res.data)
 
-      this.setState((state) => {
-        state.tags.push(newTag);
-        state.tagBeingCreated = null;
-        return state
+        this.setState((state) => {
+          state.tags.push(newTag);
+          state.tagBeingCreated = null;
+          return state
+        });
+      })
+      .catch(err => {
+        this.setState({ tagBeingCreated: null });
       });
-    });
   }
 
   handleTagCancelation() {
