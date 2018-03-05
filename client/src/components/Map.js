@@ -57,9 +57,7 @@ class Map extends Component {
   handleTagCreation(tag) {
     delete tag.id
     API.post(`/api/tags`, tag).then(res => {
-      var newTag = Object.assign(tag, {
-        id: res.id
-      })
+      var newTag = Object.assign(tag, res.data)
 
       this.setState((state) => {
         state.tags.push(newTag);
@@ -82,12 +80,9 @@ class Map extends Component {
       return (
         <Tag
           key={tag.id}
-          id={tag.id}
-          message={tag.message}
-          location={tag.location}
-          createdAt={tag.createdAt}
           lat={tag.location.lat}
           lng={tag.location.lng}
+          tag={tag}
           handleTagCreation={this.handleTagCreation}
           handleTagRemoval={this.handleTagRemoval}
         />

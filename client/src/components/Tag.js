@@ -5,12 +5,7 @@ class Tag extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      id: props.id,
-      message: props.message,
-      location: props.location,
-      createdAt: props.createdAt
-    };
+    this.state = { ...props.tag };
 
     this.handleTagMessageChange = this.handleTagMessageChange.bind(this);
     this.handleTagCreation = this.handleTagCreation.bind(this);
