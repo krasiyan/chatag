@@ -7,7 +7,9 @@ class Main extends Component {
   render () {
     return (
       <Switch>
-        <Route exact path='/' component={Map} />
+        <Route exact path='/' render={()=>
+          <Map searchFieldRef={this.props.searchFieldRef}/>
+        } />
         <Route exact path='/about' component={About} />
       </Switch>
     )

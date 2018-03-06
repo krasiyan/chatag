@@ -17,10 +17,11 @@ class Map extends Component {
       lat: 42.2020702,
       lng: 25.3248541
     },
-    zoom: 15
+    zoom: 15,
+    searchFieldRef: null
   };
 
-  constructor () {
+  constructor (props) {
     super()
     this.state = {
       tags: [],
@@ -43,13 +44,8 @@ class Map extends Component {
 
   onGoogleApiLoaded({map, maps}) {
     // Add input to search
-    console.log(maps.places);
-
+    // console.log(maps.places);
   };
-
-  componentWillMount() {
-    const input = ReactDOM.findDOMNode(this.refs.input);
-  }
 
   handleMapClick(e) {
     if (this.state.tagBeingCreated) return
