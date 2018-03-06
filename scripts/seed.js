@@ -15,7 +15,6 @@ ds.automigrate('tag', function(err) {
         lat: 37.7749,
         lng: 122.4194,
       },
-      createdAt: new Date(),
     },
     {
       message: 'sofia',
@@ -23,7 +22,6 @@ ds.automigrate('tag', function(err) {
         lat: 42.6977,
         lng: 23.3219,
       },
-      createdAt: new Date(),
     },
     {
       message: 'pisa',
@@ -31,7 +29,6 @@ ds.automigrate('tag', function(err) {
         lat: 43.7228,
         lng: 10.4017,
       },
-      createdAt: new Date(),
     },
     {
       message: 'florence',
@@ -39,7 +36,6 @@ ds.automigrate('tag', function(err) {
         lat: 43.7696,
         lng: 11.2558,
       },
-      createdAt: new Date(),
     },
     {
       message: 'varna',
@@ -47,7 +43,6 @@ ds.automigrate('tag', function(err) {
         lat: 43.2141,
         lng: 27.9147,
       },
-      createdAt: new Date(),
     },
     {
       message: 'munich',
@@ -55,7 +50,6 @@ ds.automigrate('tag', function(err) {
         lat: 48.1351,
         lng: 11.5820,
       },
-      createdAt: new Date(),
     },
     {
       message: 'frankfurt',
@@ -63,7 +57,6 @@ ds.automigrate('tag', function(err) {
         lat: 50.1109,
         lng: 8.6821,
       },
-      createdAt: new Date(),
     },
   ];
   var count = tags.length;
