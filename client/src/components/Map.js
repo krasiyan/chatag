@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import Tag from './Tag';
 import API from '../api';
+import ReactDOM from 'react-dom';
 
 const style = {
   position: 'absolute',
@@ -43,9 +44,10 @@ class Map extends Component {
   };
 
   onGoogleApiLoaded({map, maps}) {
-    console.log(this.props.searchFieldRef)
-    // Add input to search
-    // console.log(maps.places);
+    if (this.props.searchFieldRef && maps.places) {
+      var input = ReactDOM.findDOMNode(this.props.searchFieldRef);
+      var searchBox = maps.places.SearchBox(input);
+    }
   };
 
   handleMapClick(e) {
