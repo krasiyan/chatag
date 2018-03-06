@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import Tag from './Tag';
 import API from '../api';
-import ReactDOM from 'react-dom';
 
 const style = {
   position: 'absolute',
@@ -31,6 +30,7 @@ class Map extends Component {
     this.handleMapClick = this.handleMapClick.bind(this);
     this.handleTagCreation = this.handleTagCreation.bind(this);
     this.handleTagCancelation = this.handleTagCancelation.bind(this);
+    this.onGoogleApiLoaded = this.onGoogleApiLoaded.bind(this);
   };
 
   componentDidMount() {
@@ -43,6 +43,7 @@ class Map extends Component {
   };
 
   onGoogleApiLoaded({map, maps}) {
+    console.log(this.props.searchFieldRef)
     // Add input to search
     // console.log(maps.places);
   };
@@ -109,6 +110,7 @@ class Map extends Component {
         style={style}
         onGoogleApiLoaded={this.onGoogleApiLoaded}
         onClick={this.handleMapClick}
+        yesIWantToUseGoogleMapApiInternals={true}
       >
         {renderedTags}
       </GoogleMapReact>

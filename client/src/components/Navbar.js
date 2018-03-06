@@ -28,7 +28,7 @@ class Navbar extends Component {
                 }
               </Route>
             </ul>
-            <Search/>
+            <Search setSearchFieldRef={this.props.setSearchFieldRef} />
             <ul className="side-nav" id="mobile-demo">
               <Route path="/about">
                 {({ match }) =>
