@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FontAwesome from 'react-fontawesome';
 import { Link, Route } from 'react-router-dom';
+import Search from './Search';
 import $ from 'jquery';
 
 class Navbar extends Component {
@@ -27,6 +28,7 @@ class Navbar extends Component {
                 }
               </Route>
             </ul>
+            <Search/>
             <ul className="side-nav" id="mobile-demo">
               <Route path="/about">
                 {({ match }) =>

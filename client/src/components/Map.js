@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import Tag from './Tag';
 import API from '../api';
+import ReactDOM from 'react-dom';
 
 const style = {
   position: 'absolute',
   width: '100%',
   height: '100%',
 };
+const bootstrapURLKeys = { key: process.env.REACT_APP_GOOGLE_API_KEY, libraries: 'places' };
 
 class Map extends Component {
   static defaultProps = {
@@ -34,6 +36,14 @@ class Map extends Component {
       });
   };
 
+  onGoogleApiLoaded({map, maps}) {
+    // Add input to search
+    console.log(maps.places);
+
+  };
+  componentWillMount() {
+    const input = ReactDOM.findDOMNode(this.refs.input);
+  }
   render () {
     var renderedTags = this.state.tags.map((tag) => {
       return (
@@ -48,12 +58,13 @@ class Map extends Component {
 
     return (
       <GoogleMapReact
-        className="map"
-        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_API_KEY }}
-        defaultCenter={this.props.center}
-        defaultZoom={this.props.zoom}
-        style={style}>
-        {renderedTags}
+      className="map"
+      bootstrapURLKeys={bootstrapURLKeys}
+      defaultCenter={this.props.center}
+      defaultZoom={this.props.zoom}
+      style={style}
+      onGoogleApiLoaded={this.onGoogleApiLoaded}>
+      {renderedTags}
       </GoogleMapReact>
     )
   }

@@ -12,6 +12,25 @@ main {
   flex: 1 0 auto;
 }
 
+/* Navigation  */
 nav, .page-footer {
   background-color: #039be5;
+}
+
+/* Search input  */
+#search-input {
+  color: #039be5;
+  background-color: #fff;
+  border-radius: 20px;
+  font-size: 15px;
+  margin-left: 200px;
+  font-weight: 300;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 400px;
+  position: relative;
+}
+
+#search-input:focus {
+  border-color: #4d90fe;
 }
