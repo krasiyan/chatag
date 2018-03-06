@@ -58,13 +58,14 @@ class Map extends Component {
 
     return (
       <GoogleMapReact
-      className="map"
-      bootstrapURLKeys={bootstrapURLKeys}
-      defaultCenter={this.props.center}
-      defaultZoom={this.props.zoom}
-      style={style}
-      onGoogleApiLoaded={this.onGoogleApiLoaded}>
-      {renderedTags}
+        className="map"
+        bootstrapURLKeys={bootstrapURLKeys}
+        defaultCenter={this.props.center}
+        defaultZoom={this.props.zoom}
+        style={style}
+        onGoogleApiLoaded={this.onGoogleApiLoaded}
+      >
+        {renderedTags}
       </GoogleMapReact>
     )
   }
