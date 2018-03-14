@@ -29,20 +29,20 @@ class Map extends Component {
     this.handleMapClick = this.handleMapClick.bind(this);
     this.handleTagCreation = this.handleTagCreation.bind(this);
     this.handleTagCancelation = this.handleTagCancelation.bind(this);
+
+    this.addOrUpdateTagInState = this.addOrUpdateTagInState.bind(this);
   };
 
   componentDidMount() {
     API.get(`/api/tags`)
       .then(res => {
+        // TODO: merge with existing data
         this.setState({
           tags: (res.data || [])
         });
       });
 
-    subscribeForNewTags((err, tag) => this.setState((state) => {
-      state.tags.push(tag);
-      return state;
-    }));
+    subscribeForNewTags((err, tag) => this.addOrUpdateTagInState(tag));
   };
 
   handleMapClick(e) {
@@ -60,19 +60,32 @@ class Map extends Component {
     });
   };
 
+  addOrUpdateTagInState (tag) {
+    this.setState((state) => {
+      var existingTag = state.tags.find((existingTag) => {
+        return existingTag.id === tag.id
+      });
+
+      if (!existingTag) {
+        state.tags.push(tag)
+      } else {
+        existingTag = tag
+      }
+      return state
+    })
+  };
+
   handleTagCreation(tag) {
     delete tag.id
     API.post(`/api/tags`, tag)
       .then(res => {
         var newTag = Object.assign(tag, res.data)
 
-        this.setState((state) => {
-          state.tags.push(newTag);
-          state.tagBeingCreated = null;
-          return state
-        });
+        this.setState({ tagBeingCreated: null });
+        this.addOrUpdateTagInState(newTag);
       })
       .catch(err => {
+        console.error(err)
         this.setState({ tagBeingCreated: null });
       });
   }
