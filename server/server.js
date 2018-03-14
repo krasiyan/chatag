@@ -7,6 +7,8 @@ if (!process.env.NODE_ENV) process.env.NODE_ENV = 'development';
 var loopback = require('loopback');
 var boot = require('loopback-boot');
 var path = require('path');
+var io = require('socket.io');
+var redisAdapter = require('socket.io-redis');
 
 var app = module.exports = loopback();
 
@@ -34,6 +36,8 @@ boot(app, __dirname, function(err) {
   if (err) throw err;
 
   // start the server if `$ node server.js`
-  if (require.main === module)
-    app.start();
+  if (require.main === module) {
+    app.io = io(app.start());
+    app.io.adapter(redisAdapter({ host: 'localhost', port: 6379 }));
+  }
 });
