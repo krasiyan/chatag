@@ -38,6 +38,10 @@ boot(app, __dirname, function(err) {
   // start the server if `$ node server.js`
   if (require.main === module) {
     app.io = io(app.start());
-    app.io.adapter(redisAdapter({ host: 'localhost', port: 6379 }));
+    var adapterConfig = app.get('redisSocketIOAdapterConfig') || {
+      host: 'localhost',
+      port: 6379
+    };
+    app.io.adapter(redisAdapter(adapterConfig));
   }
 });

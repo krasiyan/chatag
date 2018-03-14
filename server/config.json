@@ -19,5 +19,9 @@
     },
     "cors": false
   },
-  "indexFile": "client/build/index.html"
+  "indexFile": "client/build/index.html",
+  "redisSocketIOAdapterConfig": {
+    "host": "localhost",
+    "port": 6379
+  }
 }
