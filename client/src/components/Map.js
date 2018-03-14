@@ -36,9 +36,9 @@ class Map extends Component {
   componentDidMount() {
     API.get(`/api/tags`)
       .then(res => {
-        // TODO: merge with existing data
-        this.setState({
-          tags: (res.data || [])
+        this.setState((state) => {
+          state.tags = state.tags.concat(res.data || [])
+          return state
         });
       });
 
