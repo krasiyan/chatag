@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import Tag from './Tag';
 import API from '../api';
+import { subscribeForNewTags } from '../ws';
 
 const style = {
   position: 'absolute',
@@ -37,6 +38,11 @@ class Map extends Component {
           tags: (res.data || [])
         });
       });
+
+    subscribeForNewTags((err, tag) => this.setState((state) => {
+      state.tags.push(tag);
+      return state;
+    }));
   };
 
   handleMapClick(e) {
