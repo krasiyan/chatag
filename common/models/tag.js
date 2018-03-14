@@ -18,6 +18,8 @@ module.exports = function(Tag) {
   }
 
   Tag.observe('after save', function (ctx, next) {
+    if (!ctx.instance) return next();
+
     var eventName = ctx.isNewInstance ? 'tagCreated' : 'tagUpdated'
     Tag.app.io.emit(eventName, ctx.instance);
 
@@ -25,6 +27,8 @@ module.exports = function(Tag) {
   });
 
   Tag.observe('before delete', function (ctx, next) {
+    if (!ctx.instance) return next();
+
     Tag.app.io.emit('tagDeleted', { id: ctx.instance.id });
 
     next();
