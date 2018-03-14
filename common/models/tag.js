@@ -19,13 +19,13 @@ module.exports = function(Tag) {
 
   Tag.observe('after save', function (ctx, next) {
     var eventName = ctx.isNewInstance ? 'tagCreated' : 'tagUpdated'
-    Order.app.io.emit(eventName, ctx.instance);
+    Tag.app.io.emit(eventName, ctx.instance);
 
     next();
   });
 
   Tag.observe('before delete', function (ctx, next) {
-    Order.app.io.emit('tagDeleted', { id: ctx.instance.id });
+    Tag.app.io.emit('tagDeleted', { id: ctx.instance.id });
 
     next();
   })
