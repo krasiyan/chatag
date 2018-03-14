@@ -18,16 +18,20 @@
 
   2. (Optional) Install a node.js version manager via either one of:
 
-  2.1. [NVM](https://github.com/creationix/nvm#installation)
-
+  - [NVM](https://github.com/creationix/nvm#installation)
+    
+    ```
     $ nvm install v8.9.4 && nvm use v8.9.4
     $ npm install npm@latest -g
-
-  2.2. [n](https://github.com/tj/n)
-
+    ```
+    
+  - [n](https://github.com/tj/n)
+    
+    ```
     $ npm install n -g
     $ n v8.9.4
-
+    ```
+  
   3. Update NPM to the latest version and make minor config improvements
 
     $ npm install npm@latest -g
