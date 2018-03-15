@@ -6,11 +6,6 @@ var async = require('async');
 var app = require(path.resolve(__dirname, '../server/server'));
 var ds = app.dataSources.mongodb;
 
-// instantiate the standalone 'socket.io-emitter'
-// so that WS events can still be emitted from the model hooks
-var adapterConfig = app.get('redisSocketIOAdapterConfig') || { host: '127.0.0.1', port: 6379 };
-app.io = require('socket.io-emitter')(adapterConfig);
-
 ds.automigrate('tag', function(err) {
   if (err) throw err;
 

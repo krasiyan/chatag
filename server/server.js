@@ -35,13 +35,18 @@ app.start = function() {
 boot(app, __dirname, function(err) {
   if (err) throw err;
 
+  var socketIOAdapterConfig = app.get('redisSocketIOAdapterConfig') || {
+    host: 'localhost',
+    port: 6379
+  };
+
   // start the server if `$ node server.js`
   if (require.main === module) {
     app.io = io(app.start());
-    var adapterConfig = app.get('redisSocketIOAdapterConfig') || {
-      host: 'localhost',
-      port: 6379
-    };
-    app.io.adapter(redisAdapter(adapterConfig));
+    app.io.adapter(redisAdapter(socketIOAdapterConfig));
+  } else {
+    // instantiate the standalone 'socket.io-emitter' even in no http server is started
+    // so that WS events can still be emitted from the model hooks
+    app.io = require('socket.io-emitter')(socketIOAdapterConfig);
   }
 });
