@@ -10,7 +10,7 @@ function subscribeForUpdatedTags (cb) {
 };
 
 function subscribeForDeletedTags (cb) {
-  socket.on('tagDeleted', tagId => cb(null, tagId));
+  socket.on('tagDeleted', tag => cb(null, tag));
 };
 
 export {

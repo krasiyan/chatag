@@ -45,7 +45,7 @@ class Map extends Component {
 
     subscribeForNewTags((err, tag) => this.addOrUpdateTagInState(tag));
     subscribeForUpdatedTags((err, tag) => this.addOrUpdateTagInState(tag));
-    subscribeForDeletedTags((err, tagId) => this.removeTagFromState(tagId));
+    subscribeForDeletedTags((err, tag) => this.removeTagFromState(tag));
   };
 
   handleMapClick(e) {
@@ -78,11 +78,12 @@ class Map extends Component {
     })
   };
 
-  removeTagFromState (tagId) {
+  removeTagFromState (tag) {
     this.setState((state) => {
       var existingTagIdx = state.tags.findIndex((existingTag) => {
-        return existingTag.id === tagId
+        return existingTag.id === tag.id
       });
+
 
       if (existingTagIdx !== -1) {
         state.tags.splice(existingTagIdx, 1);

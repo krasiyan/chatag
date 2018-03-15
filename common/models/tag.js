@@ -27,9 +27,9 @@ module.exports = function(Tag) {
   });
 
   Tag.observe('before delete', function (ctx, next) {
-    if (!ctx.instance) return next();
+    if (!ctx.where || !ctx.where.id) return next();
 
-    Tag.app.io.emit('tagDeleted', { id: ctx.instance.id });
+    Tag.app.io.emit('tagDeleted', { id: ctx.where.id });
 
     next();
   })
