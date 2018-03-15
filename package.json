@@ -28,6 +28,7 @@
     "loopback-connector-mongodb": "1.18.1",
     "serve-favicon": "^2.0.1",
     "socket.io": "2.0.4",
+    "socket.io-emitter": "3.1.1",
     "socket.io-redis": "5.2.0",
     "strong-error-handler": "^2.0.0"
   },
