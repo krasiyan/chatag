@@ -65,14 +65,14 @@ class Map extends Component {
 
   addOrUpdateTagInState (tag) {
     this.setState((state) => {
-      var existingTag = state.tags.find((existingTag) => {
+      var existingTagIdx = state.tags.findIndex((existingTag) => {
         return existingTag.id === tag.id
       });
 
-      if (!existingTag) {
+      if (existingTagIdx === -1) {
         state.tags.push(tag)
       } else {
-        existingTag = tag
+        state.tags[existingTagIdx] = tag
       }
       return state
     })
