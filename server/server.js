@@ -37,7 +37,7 @@ boot(app, __dirname, function(err) {
 
   var socketIOAdapterConfig = app.get('redisSocketIOAdapterConfig') || {
     host: 'localhost',
-    port: 6379
+    port: 6379,
   };
 
   // start the server if `$ node server.js`

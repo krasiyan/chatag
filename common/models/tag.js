@@ -17,20 +17,20 @@ module.exports = function(Tag) {
     });
   }
 
-  Tag.observe('after save', function (ctx, next) {
+  Tag.observe('after save', function(ctx, next) {
     if (!ctx.instance) return next();
 
-    var eventName = ctx.isNewInstance ? 'tagCreated' : 'tagUpdated'
+    var eventName = ctx.isNewInstance ? 'tagCreated' : 'tagUpdated';
     Tag.app.io.emit(eventName, ctx.instance);
 
     next();
   });
 
-  Tag.observe('before delete', function (ctx, next) {
+  Tag.observe('before delete', function(ctx, next) {
     if (!ctx.where || !ctx.where.id) return next();
 
-    Tag.app.io.emit('tagDeleted', { id: ctx.where.id });
+    Tag.app.io.emit('tagDeleted', {id: ctx.where.id});
 
     next();
-  })
+  });
 };
