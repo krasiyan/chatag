@@ -15,5 +15,6 @@ function subscribeForDeletedTags (cb) {
 
 export {
   subscribeForNewTags,
+  subscribeForUpdatedTags,
   subscribeForDeletedTags
 };
