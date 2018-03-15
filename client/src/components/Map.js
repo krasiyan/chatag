@@ -44,6 +44,7 @@ class Map extends Component {
       });
 
     subscribeForNewTags((err, tag) => this.addOrUpdateTagInState(tag));
+    subscribeForDeletedTags((err, tagId) => this.removeTagFromState(tagId));
   };
 
   handleMapClick(e) {

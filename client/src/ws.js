@@ -5,4 +5,11 @@ function subscribeForNewTags (cb) {
   socket.on('tagCreated', tag => cb(null, tag));
 };
 
-export { subscribeForNewTags };
+function subscribeForDeletedTags (cb) {
+  socket.on('tagDeleted', tagId => cb(null, tagId));
+};
+
+export {
+  subscribeForNewTags,
+  subscribeForDeletedTags
+};
