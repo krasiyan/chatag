@@ -31,6 +31,7 @@ class Map extends Component {
     this.handleTagCancelation = this.handleTagCancelation.bind(this);
 
     this.addOrUpdateTagInState = this.addOrUpdateTagInState.bind(this);
+    this.removeTagFromState = this.removeTagFromState.bind(this);
   };
 
   componentDidMount() {
@@ -74,6 +75,20 @@ class Map extends Component {
       return state
     })
   };
+
+  removeTagFromState (tagId) {
+    this.setState((state) => {
+      var existingTagIdx = state.tags.findIndex((existingTag) => {
+        return existingTag.id === tagId
+      });
+
+      if (existingTagIdx !== -1) {
+        state.tags.splice(existingTagIdx, 1);
+      }
+
+      return state;
+    })
+  }
 
   handleTagCreation(tag) {
     delete tag.id
