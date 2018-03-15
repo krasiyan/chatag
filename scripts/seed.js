@@ -1,6 +1,7 @@
 'use strict';
 
 var path = require('path');
+var async = require('async');
 
 var app = require(path.resolve(__dirname, '../server/server'));
 var ds = app.dataSources.mongodb;
@@ -64,16 +65,17 @@ ds.automigrate('tag', function(err) {
       },
     },
   ];
-  var count = tags.length;
-  tags.forEach(function(tag) {
+
+  async.eachSeries(tags, (tag, nextTag) => {
     app.models.Tag.create(tag, function(err, createdEntry) {
-      if (err) throw err;
+      if (err) return nextTag(err);
 
       console.log('Created:', createdEntry);
-
-      count--;
-      if (count === 0)
-        ds.disconnect();
+      nextTag();
     });
+  }, (err) => {
+    ds.disconnect();
+    if (err) throw err;
+    process.exit();
   });
 });

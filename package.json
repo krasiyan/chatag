@@ -18,6 +18,7 @@
     "test:posttest": "npm run test:lint && nsp check"
   },
   "dependencies": {
+    "async": "2.6.0",
     "compression": "^1.0.3",
     "cors": "^2.5.2",
     "dotenv": "5.0.1",
