@@ -5,6 +5,10 @@ function subscribeForNewTags (cb) {
   socket.on('tagCreated', tag => cb(null, tag));
 };
 
+function subscribeForUpdatedTags (cb) {
+  socket.on('tagUpdated', tag => cb(null, tag));
+};
+
 function subscribeForDeletedTags (cb) {
   socket.on('tagDeleted', tagId => cb(null, tagId));
 };
