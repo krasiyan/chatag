@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Moment from 'react-moment';
-import FontAwesome from 'react-fontawesome';
 
 class Tag extends Component {
 
@@ -56,14 +55,7 @@ class Tag extends Component {
 
     return (
       <div className="tag-wrapper">
-        <div className="tag-content">
-          {getTagContents.apply(this)}
-        </div>
-        <FontAwesome
-          name="map-marker"
-          className="tag-marker"
-          size='3x'
-        />
+        {getTagContents.apply(this)}
       </div>
     )
   }
