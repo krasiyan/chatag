@@ -16,21 +16,31 @@ nav, .page-footer {
   background-color: #039be5;
 }
 
-.tag {
+.tag-wrapper {
   position: relative;
+  bottom: 120px;
+  right: 100px;
+}
+
+.tag-marker {
+  position: relative;
+  left: 90px;
+  color: #039be5;
+}
+
+.tag-content {
+  position: relative;
+  height: 90px;
+  width: 200px;
   font-size: 15px;
   color: white;
   background: #4fc3f7;
   border: 2px solid #039be5;
   border-radius: 15px;
   padding: 10px;
-  height: 90px;
-  width: 200px;
-  top: -20px;
-  left: -30px;
 }
 
-.tag .tag-age {
+.tag-age {
   position: absolute;
   bottom: 5px;
   right: 5px
