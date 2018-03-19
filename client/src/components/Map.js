@@ -35,8 +35,11 @@ class Map extends Component {
   };
 
   componentDidMount() {
+    this.mounted = true;
+
     API.get(`/api/tags`)
       .then(res => {
+        if (!this.mounted) return
         this.setState((state) => {
           state.tags = state.tags.concat(res.data || [])
           return state
@@ -47,6 +50,10 @@ class Map extends Component {
     subscribeForUpdatedTags((err, tag) => this.addOrUpdateTagInState(tag));
     subscribeForDeletedTags((err, tag) => this.removeTagFromState(tag));
   };
+
+  componentWillUnmount() {
+    this.mounted = false;
+  }
 
   handleMapClick(e) {
     if (this.state.tagBeingCreated) return
@@ -64,6 +71,8 @@ class Map extends Component {
   };
 
   addOrUpdateTagInState (tag) {
+    if (!this.mounted) return
+
     this.setState((state) => {
       var existingTagIdx = state.tags.findIndex((existingTag) => {
         return existingTag.id === tag.id
@@ -79,6 +88,8 @@ class Map extends Component {
   };
 
   removeTagFromState (tag) {
+    if (!this.mounted) return
+
     this.setState((state) => {
       var existingTagIdx = state.tags.findIndex((existingTag) => {
         return existingTag.id === tag.id
