@@ -16,9 +16,13 @@ nav, .page-footer {
   background-color: #039be5;
 }
 
+.gm-style:first-of-type > div:nth-child(1) {
+  cursor: crosshair !important;
+}
+
 .tag-wrapper {
   position: relative;
-  bottom: 110px;
+  bottom: 101px;
   right: 99px;
   position: relative;
   height: 90px;
