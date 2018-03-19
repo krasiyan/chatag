@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Moment from 'react-moment';
 
 class Tag extends Component {
 
@@ -42,7 +43,13 @@ class Tag extends Component {
           </div>
         )
       } else {
-        return `${this.state.message} @ ${this.state.createdAt}`
+        return (
+          <div>
+            <span>{this.state.message}</span>
+            <br />
+            <Moment fromNow>{this.state.createdAt}</Moment>
+          </div>
+        )
       }
     }
 
