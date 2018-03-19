@@ -12,6 +12,13 @@ class Tag extends Component {
     this.handleTagCancelation = this.handleTagCancelation.bind(this);
   };
 
+  componentWillReceiveProps (nextProps) {
+    var newTag = nextProps.tag
+    if (newTag && newTag.message && newTag.message !== this.state.message) {
+      this.setState({ ...newTag });
+    }
+  }
+
   handleTagMessageChange(event) {
     this.setState({ message: event.target.value });
   };

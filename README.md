@@ -6,14 +6,49 @@
 ## Prerequisites
 
 - git
-- The NodeJS version defined in `package.json` + NPM. It is good to use either the `N` or `nvm` node version managers. Currently `8.1.4`.
+- The Node.js version defined in `package.json` + NPM. It is good to use either the `N` or `nvm` node version managers. Currently `8.1.4`.
 - MongoDB >= 3.4.X
+- Redis >= 4.0.8
 
 ## Development Setup
 
+### Node.js and NPM
+
+  1. Install node.js (via i.e. https://nodejs.org/en/download/package-manager/)
+
+  2. (Optional) Install a node.js version manager via either one of:
+
+  - [NVM](https://github.com/creationix/nvm#installation)
+    
+    ```
     $ nvm install v8.9.4 && nvm use v8.9.4
     $ npm install npm@latest -g
+    ```
+    
+  - [n](https://github.com/tj/n)
+    
+    ```
+    $ npm install n -g
+    $ n v8.9.4
+    ```
+  
+  3. Update NPM to the latest version and make minor config improvements
+
+    $ npm install npm@latest -g
     $ npm config set progress false # (optional npm speed optimization)
+
+### MongoDB
+
+  See the [MongoDB installation page](https://docs.mongodb.com/manual/installation/)
+
+### Redis
+
+  See the [Redis quickstart guide](https://redis.io/topics/quickstart)
+
+  :exclamation: Make sure to always secure your redis deployment. See the [Securing Redis](https://redis.io/topics/quickstart#securing-redis) section of the quickstart guide for more details
+
+### Project
+
     $ git clone git@github.com:krasiyan/chatag.git
     $ cd ./chatag
     $ npm i
@@ -26,7 +61,6 @@
 - [Trello Board](https://trello.com/b/jzVnPHBj/chatag)
 
 ## Development tips
-
 
 Start the API server and the client's development server:
 
@@ -66,6 +100,10 @@ Run the client tests only:
 Run the NSP security tests only:
 
     $ npm run test:posttest
+
+List all available NPM scripts
+
+    $ npm run
 
 ## Server management
 

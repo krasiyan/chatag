@@ -18,6 +18,7 @@
     "test:posttest": "npm run test:lint && nsp check"
   },
   "dependencies": {
+    "async": "2.6.0",
     "compression": "^1.0.3",
     "cors": "^2.5.2",
     "dotenv": "5.0.1",
@@ -27,6 +28,9 @@
     "loopback-component-explorer": "^5.0.0",
     "loopback-connector-mongodb": "1.18.1",
     "serve-favicon": "^2.0.1",
+    "socket.io": "2.0.4",
+    "socket.io-emitter": "3.1.1",
+    "socket.io-redis": "5.2.0",
     "strong-error-handler": "^2.0.0"
   },
   "devDependencies": {
