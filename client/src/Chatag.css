@@ -15,3 +15,16 @@ main {
 nav, .page-footer {
   background-color: #039be5;
 }
+
+.tag {
+  position: relative;
+  color: white;
+  background: #42d9f4;
+  border: 2px solid #009fc6;
+  border-radius: 25px;
+  padding: 10px;
+  height: 90px;
+  width: 200px;
+  top: -20px;
+  left: -30px;
+}
