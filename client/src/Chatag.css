@@ -18,13 +18,20 @@ nav, .page-footer {
 
 .tag {
   position: relative;
+  font-size: 15px;
   color: white;
   background: #4fc3f7;
   border: 2px solid #039be5;
-  border-radius: 25px;
+  border-radius: 15px;
   padding: 10px;
   height: 90px;
   width: 200px;
   top: -20px;
   left: -30px;
+}
+
+.tag .tag-age {
+  position: absolute;
+  bottom: 5px;
+  right: 5px
 }

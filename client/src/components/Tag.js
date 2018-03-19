@@ -47,7 +47,7 @@ class Tag extends Component {
           <div>
             <span>{this.state.message}</span>
             <br />
-            <Moment fromNow>{this.state.createdAt}</Moment>
+            <Moment fromNow className="tag-age">{this.state.createdAt}</Moment>
           </div>
         )
       }
