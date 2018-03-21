@@ -23,13 +23,19 @@ class Map extends Component {
     }
   };
 
-  constructor () {
+  constructor (props) {
     super()
     this.state = {
+      map: {
+        zoom: props.zoom,
+        center: props.center
+        bounds: null,
+      },
       tags: [],
       tagBeingCreated: null
     };
 
+    this.handleMapChange = this.handleMapChange.bind(this);
     this.handleMapClick = this.handleMapClick.bind(this);
     this.handleTagCreation = this.handleTagCreation.bind(this);
     this.handleTagCancelation = this.handleTagCancelation.bind(this);
@@ -57,6 +63,17 @@ class Map extends Component {
 
   componentWillUnmount() {
     this.mounted = false;
+  }
+
+  handleMapChange(mapProps) {
+    console.log(JSON.stringify(mapProps.bounds, null, 2))
+
+    this.setState(state => {
+      state.map.center = mapProps.center
+      state.map.zoom = mapProps.zoom
+      state.map.bounds = mapProps.bounds
+      return state
+    })
   }
 
   handleMapClick(e) {
@@ -152,7 +169,8 @@ class Map extends Component {
         defaultZoom={this.props.zoom}
         options={this.props.options}
         style={style}
-        onClick={this.handleMapClick}>
+        onClick={this.handleMapClick}
+        onChange={this.handleMapChange}>
         {renderedTags}
       </GoogleMapReact>
     )
