@@ -16,7 +16,11 @@ class Map extends Component {
       lat: 42.2020702,
       lng: 25.3248541
     },
-    zoom: 15
+    zoom: 15,
+    options: {
+      minZoom: 1,
+      maxZoom: 15
+    }
   };
 
   constructor () {
@@ -146,6 +150,7 @@ class Map extends Component {
         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_API_KEY }}
         defaultCenter={this.props.center}
         defaultZoom={this.props.zoom}
+        options={this.props.options}
         style={style}
         onClick={this.handleMapClick}>
         {renderedTags}
