@@ -18,8 +18,8 @@ class Map extends Component {
     },
     zoom: 15,
     options: {
-      minZoom: 1,
-      maxZoom: 15
+      minZoom: 3,
+      maxZoom: 13
     }
   };
 
