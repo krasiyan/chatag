@@ -14,7 +14,7 @@ ds.automigrate('tag', function(err) {
       message: 'san francisco',
       location: {
         lat: 37.7749,
-        lng: 122.4194,
+        lng: -122.4194,
       },
     },
     {
