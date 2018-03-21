@@ -28,7 +28,7 @@ class Map extends Component {
     this.state = {
       map: {
         zoom: props.zoom,
-        center: props.center
+        center: props.center,
         bounds: null,
       },
       tags: [],
