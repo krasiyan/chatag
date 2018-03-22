@@ -65,13 +65,13 @@ class Map extends Component {
     }, () => {
 
       var queryParams = {}
-      if (this.state.map.bounds && this.state.map.bounds.nw && this.state.map.bounds.se) {
+      if (this.state.map.bounds && this.state.map.bounds.sw && this.state.map.bounds.ne) {
         // TODO: round up the coordinates in order to benefit from caching
         queryParams = {
-          nwLat: this.state.map.bounds.nw.lat,
-          nwLng: this.state.map.bounds.nw.lng,
-          seLat: this.state.map.bounds.se.lat,
-          seLng: this.state.map.bounds.se.lng
+          swLat: this.state.map.bounds.sw.lat,
+          swLng: this.state.map.bounds.sw.lng,
+          neLat: this.state.map.bounds.ne.lat,
+          neLng: this.state.map.bounds.ne.lng
         }
       }
 
