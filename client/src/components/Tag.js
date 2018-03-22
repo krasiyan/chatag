@@ -43,9 +43,9 @@ class Tag extends Component {
               <textarea id="icon_prefix2" className="tag-text materialize-textarea" data-length="120" value={this.state.message} onChange={this.handleTagMessageChange} />
               <label for="textarea1">What's taggin'?</label>
             </div>
-            <button className="tag-add waves-effect btn" onClick={this.handleTagCreation}>
-              <FontAwesome name='edit' /> Tag!
-            </button>
+            <a className="tag-add waves-effect waves-light btn" onClick={this.handleTagCreation}>
+              Tag it <FontAwesome name='map-marker' />
+            </a>
           </div>
         )
       } else {
