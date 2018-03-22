@@ -47,15 +47,6 @@ class Map extends Component {
   componentDidMount() {
     this.mounted = true;
 
-    API.get(`/api/tags`)
-      .then(res => {
-        if (!this.mounted) return
-        this.setState((state) => {
-          state.tags = state.tags.concat(res.data || [])
-          return state
-        });
-      });
-
     subscribeForNewTags((err, tag) => this.addOrUpdateTagInState(tag));
     subscribeForUpdatedTags((err, tag) => this.addOrUpdateTagInState(tag));
     subscribeForDeletedTags((err, tag) => this.removeTagFromState(tag));
@@ -66,13 +57,17 @@ class Map extends Component {
   }
 
   handleMapChange(mapProps) {
-    console.log(JSON.stringify(mapProps.bounds, null, 2))
-
     this.setState(state => {
       state.map.center = mapProps.center
       state.map.zoom = mapProps.zoom
       state.map.bounds = mapProps.bounds
       return state
+    }, (state) => {
+      API.get(`/api/tags`)
+        .then(res => {
+          if (!this.mounted) return
+          this.setState({ tags: res.data || [] });
+        });
     })
   }
 
