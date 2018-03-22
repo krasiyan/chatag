@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Moment from 'react-moment';
+import FontAwesome from 'react-fontawesome';
 
 class Tag extends Component {
 
@@ -37,9 +38,14 @@ class Tag extends Component {
       if (this.state.id === 'new') {
         return (
           <div>
-            <textarea value={this.state.message} onChange={this.handleTagMessageChange} />
-            <button onClick={this.handleTagCreation}>Tag!</button>
-            <button onClick={this.handleTagCancelation}>X</button>
+            <FontAwesome className="tag-cancel" name='times' onClick={this.handleTagCancelation} />
+            <div className="input-field">
+              <textarea id="icon_prefix2" className="tag-text materialize-textarea" data-length="120" value={this.state.message} onChange={this.handleTagMessageChange} />
+              <label for="textarea1">Enter your tag here:</label>
+            </div>
+            <button className="tag-add waves-effect btn" onClick={this.handleTagCreation}>
+              <FontAwesome name='edit' /> Tag!
+            </button>
           </div>
         )
       } else {
