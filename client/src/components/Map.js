@@ -62,8 +62,20 @@ class Map extends Component {
       state.map.zoom = mapProps.zoom
       state.map.bounds = mapProps.bounds
       return state
-    }, (state) => {
-      API.get(`/api/tags`)
+    }, () => {
+
+      var queryParams = {}
+      if (this.state.map.bounds && this.state.map.bounds.nw && this.state.map.bounds.se) {
+        // TODO: round up the coordinates in order to benefit from caching
+        queryParams = {
+          nwLat: this.state.map.bounds.nw.lat,
+          nwLng: this.state.map.bounds.nw.lng,
+          seLat: this.state.map.bounds.se.lat,
+          seLng: this.state.map.bounds.se.lng
+        }
+      }
+
+      API.get(`/api/tags`, { params: queryParams })
         .then(res => {
           if (!this.mounted) return
           this.setState({ tags: res.data || [] });
