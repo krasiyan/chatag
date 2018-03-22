@@ -41,7 +41,7 @@ class Tag extends Component {
             <FontAwesome className="tag-cancel" name='times' onClick={this.handleTagCancelation} />
             <div className="input-field">
               <textarea id="icon_prefix2" className="tag-text materialize-textarea" data-length="120" value={this.state.message} onChange={this.handleTagMessageChange} />
-              <label for="textarea1">Enter your tag here:</label>
+              <label for="textarea1">What's taggin'?</label>
             </div>
             <button className="tag-add waves-effect btn" onClick={this.handleTagCreation}>
               <FontAwesome name='edit' /> Tag!
