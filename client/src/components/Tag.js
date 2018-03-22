@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Moment from 'react-moment';
+import FontAwesome from 'react-fontawesome';
 
 class Tag extends Component {
 
@@ -36,23 +38,36 @@ class Tag extends Component {
       if (this.state.id === 'new') {
         return (
           <div>
-            <textarea value={this.state.message} onChange={this.handleTagMessageChange} />
-            <button onClick={this.handleTagCreation}>Tag!</button>
-            <button onClick={this.handleTagCancelation}>X</button>
+            <FontAwesome className="tag-cancel" name='times' onClick={this.handleTagCancelation} />
+            <div className="input-field">
+              <textarea
+                id="icon_prefix2"
+                className="tag-textarea materialize-textarea"
+                data-length="120"
+                value={this.state.message}
+                onChange={this.handleTagMessageChange}
+                autoFocus
+              />
+              <label htmlFor="textarea1">What's taggin'?</label>
+            </div>
+            <a className="tag-add waves-effect waves-light btn" onClick={this.handleTagCreation}>
+              Tag it <FontAwesome name='map-marker' />
+            </a>
           </div>
         )
       } else {
-        return `${this.state.message} @ ${this.state.createdAt}`
+        return (
+          <div>
+            <span>{this.state.message}</span>
+            <br />
+            <Moment fromNow className="tag-age">{this.state.createdAt}</Moment>
+          </div>
+        )
       }
     }
 
     return (
-      <div style={{
-        position: 'relative', color: 'white', background: '#42d9f4',
-        border: '2px solid #009fc6',
-        padding: 10,
-        height: 70, width: 70, top: -20, left: -30,
-      }}>
+      <div className="tag-wrapper">
         {getTagContents.apply(this)}
       </div>
     )
