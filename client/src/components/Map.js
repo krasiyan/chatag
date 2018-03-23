@@ -75,7 +75,7 @@ class Map extends Component {
         }
       }
 
-      API.get(`/api/tags`, { params: queryParams })
+      API.get(`/api/tags/in-region`, { params: queryParams })
         .then(res => {
           if (!this.mounted) return
           this.setState({ tags: res.data || [] });
