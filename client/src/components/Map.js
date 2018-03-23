@@ -18,7 +18,7 @@ class Map extends Component {
     },
     zoom: 15,
     options: {
-      minZoom: 3,
+      minZoom: 4,
       maxZoom: 13
     }
   };
