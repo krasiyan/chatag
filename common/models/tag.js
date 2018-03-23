@@ -17,19 +17,19 @@ module.exports = function(Tag) {
     });
   }
 
-  Tag.getInRegion = function(swLat, swLng, neLat, neLng, cb) {
-    Tag.find({
-      where: {
-        location: {
-          geoWithin: {
-            $box: [
-              [swLng, swLat],
-              [neLng, neLat],
-            ],
-          },
+  Tag.getInRegion = function(swLat, swLng, neLat, neLng, next) {
+    var query = {
+      location: {
+        geoWithin: {
+          $box: [
+            [swLat, swLng],
+            [neLat, neLng],
+          ],
         },
       },
-    }, cb);
+    };
+
+    Tag.find({where: query}, next);
   };
 
   Tag.remoteMethod(
