@@ -53,11 +53,21 @@ nav, .page-footer {
   border-width: 10px;
   margin-left: -10px;
 }
+
 .tag-wrapper:before {
   border-color: rgba(3, 155, 229, 0);
   border-top-color: #039be5;
   border-width: 13px;
   margin-left: -13px;
+}
+
+.tag-wrapper.hover, .tag-wrapper:hover  {
+  z-index: 100;
+  background: #29b6f6;
+}
+
+.tag-wrapper.hover:after, .tag-wrapper:hover:after {
+  border-top-color: #29b6f6;
 }
 
 .tag-age {
