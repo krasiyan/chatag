@@ -147,7 +147,8 @@ class Map extends Component {
         defaultCenter={this.props.center}
         defaultZoom={this.props.zoom}
         style={style}
-        onClick={this.handleMapClick}>
+        onClick={this.handleMapClick}
+        hoverDistance={10}>
         {renderedTags}
       </GoogleMapReact>
     )
