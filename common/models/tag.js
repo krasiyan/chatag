@@ -17,6 +17,39 @@ module.exports = function(Tag) {
     });
   }
 
+  Tag.getInRegion = function(swLat, swLng, neLat, neLng, next) {
+    var query = {
+      location: {
+        geoWithin: {
+          $box: [
+            [swLat, swLng],
+            [neLat, neLng],
+          ],
+        },
+      },
+    };
+
+    Tag.find({where: query}, next);
+  };
+
+  Tag.remoteMethod(
+    'getInRegion',
+    {
+      http: {path: '/in-region', verb: 'get'},
+      accepts: [{
+        arg: 'swLat', type: 'number', required: true,
+      }, {
+        arg: 'swLng', type: 'number', required: true,
+      }, {
+        arg: 'neLat', type: 'number', required: true,
+      }, {
+        arg: 'neLng', type: 'number', required: true,
+      }],
+      returns: {type: ['tag'], root: true},
+      description: 'Get instances in the requested geographical region',
+    }
+  );
+
   Tag.observe('after save', function(ctx, next) {
     if (!ctx.instance) return next();
 

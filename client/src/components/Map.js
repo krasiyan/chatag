@@ -16,16 +16,26 @@ class Map extends Component {
       lat: 42.2020702,
       lng: 25.3248541
     },
-    zoom: 15
+    zoom: 15,
+    options: {
+      minZoom: 4,
+      maxZoom: 13
+    }
   };
 
-  constructor () {
+  constructor (props) {
     super()
     this.state = {
+      map: {
+        zoom: props.zoom,
+        center: props.center,
+        bounds: null,
+      },
       tags: [],
       tagBeingCreated: null
     };
 
+    this.handleMapChange = this.handleMapChange.bind(this);
     this.handleMapClick = this.handleMapClick.bind(this);
     this.handleTagCreation = this.handleTagCreation.bind(this);
     this.handleTagCancelation = this.handleTagCancelation.bind(this);
@@ -37,15 +47,6 @@ class Map extends Component {
   componentDidMount() {
     this.mounted = true;
 
-    API.get(`/api/tags`)
-      .then(res => {
-        if (!this.mounted) return
-        this.setState((state) => {
-          state.tags = state.tags.concat(res.data || [])
-          return state
-        });
-      });
-
     subscribeForNewTags((err, tag) => this.addOrUpdateTagInState(tag));
     subscribeForUpdatedTags((err, tag) => this.addOrUpdateTagInState(tag));
     subscribeForDeletedTags((err, tag) => this.removeTagFromState(tag));
@@ -53,6 +54,33 @@ class Map extends Component {
 
   componentWillUnmount() {
     this.mounted = false;
+  }
+
+  handleMapChange(mapProps) {
+    this.setState(state => {
+      state.map.center = mapProps.center
+      state.map.zoom = mapProps.zoom
+      state.map.bounds = mapProps.bounds
+      return state
+    }, () => {
+
+      var queryParams = {}
+      if (this.state.map.bounds && this.state.map.bounds.sw && this.state.map.bounds.ne) {
+        // TODO: round up the coordinates in order to benefit from caching
+        queryParams = {
+          swLat: this.state.map.bounds.sw.lat,
+          swLng: this.state.map.bounds.sw.lng,
+          neLat: this.state.map.bounds.ne.lat,
+          neLng: this.state.map.bounds.ne.lng
+        }
+      }
+
+      API.get(`/api/tags/in-region`, { params: queryParams })
+        .then(res => {
+          if (!this.mounted) return
+          this.setState({ tags: res.data || [] });
+        });
+    })
   }
 
   handleMapClick(e) {
@@ -146,9 +174,12 @@ class Map extends Component {
         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_API_KEY }}
         defaultCenter={this.props.center}
         defaultZoom={this.props.zoom}
+        options={this.props.options}
         style={style}
         onClick={this.handleMapClick}
-        hoverDistance={10}>
+        onChange={this.handleMapChange}
+        hoverDistance={10}
+      >
         {renderedTags}
       </GoogleMapReact>
     )
