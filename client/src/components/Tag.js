@@ -43,7 +43,8 @@ class Tag extends Component {
               <textarea
                 id="icon_prefix2"
                 className="tag-textarea materialize-textarea"
-                data-length="120"
+                data-length="140"
+                maxlength="140"
                 value={this.state.message}
                 onChange={this.handleTagMessageChange}
                 autoFocus
