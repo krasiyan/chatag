@@ -177,7 +177,9 @@ class Map extends Component {
         options={this.props.options}
         style={style}
         onClick={this.handleMapClick}
-        onChange={this.handleMapChange}>
+        onChange={this.handleMapChange}
+        hoverDistance={10}
+      >
         {renderedTags}
       </GoogleMapReact>
     )

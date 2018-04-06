@@ -67,7 +67,7 @@ class Tag extends Component {
     }
 
     return (
-      <div className="tag-wrapper">
+      <div className={"tag-wrapper " + (this.props.$hover ? "hover" : "")}>
         {getTagContents.apply(this)}
       </div>
     )
