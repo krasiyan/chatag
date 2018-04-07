@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Moment from 'react-moment';
 import FontAwesome from 'react-fontawesome';
+import $ from 'jquery';
 
 class Tag extends Component {
 
@@ -32,6 +33,9 @@ class Tag extends Component {
   handleTagCancelation() {
     this.props.handleTagCancelation();
   };
+  componentDidMount () {
+    if ($('textarea#icon_prefix2').characterCounter) $('textarea#icon_prefix2').characterCounter();
+  }
 
   render () {
     function getTagContents() {
@@ -44,11 +48,13 @@ class Tag extends Component {
                 id="icon_prefix2"
                 className="tag-textarea materialize-textarea"
                 data-length="140"
-                maxlength="140"
+                length = "120"
+                maxLength="140"
                 value={this.state.message}
                 onChange={this.handleTagMessageChange}
                 autoFocus
-              />
+              >
+              </textarea>
               <label htmlFor="textarea1">What's taggin'?</label>
             </div>
             <a className="tag-add waves-effect waves-light btn" onClick={this.handleTagCreation}>
