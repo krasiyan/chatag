@@ -48,7 +48,7 @@ class Tag extends Component {
                 id="icon_prefix2"
                 className="tag-textarea materialize-textarea"
                 data-length="140"
-                length = "120"
+                length = "140"
                 maxLength="140"
                 value={this.state.message}
                 onChange={this.handleTagMessageChange}
