@@ -64,26 +64,34 @@
 
 Start the API server and the client's development server:
 
-    $ npm run develop
+    $ npm run dev
 
 This starts two separate HTTP servers:
 
-- `http://127.0.0.1:3000` - The loopback API server (serving the pre-build client)
+- `http://127.0.0.1:3000` - The loopback API server
   - `http://127.0.0.1:3000/status` - The loopback status page
   - `http://127.0.0.1:3000/explorer` - The loopback API expolorer
 - `http://127.0.0.1:3001` - The development React server
 
 Run the API server only:
 
-    $ npm run develop:server
+    $ npm run dev:server
 
 Run the React development server only:
 
-    $ npm run develop:client
+    $ npm run dev:client
 
-Built the React client app, which will be served under `http://127.0.0.1:3000/` (if the API server is running):
+Built both the client and the server app (in `/build/`):
+
+    $ npm run build
+
+Built the React client app (in `/build/client`):
 
     $ npm run build:client
+
+Built the server app (in `/build/server`):
+
+    $ npm run build:server
 
 Run the full test pipeline:
 
