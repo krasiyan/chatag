@@ -9,7 +9,7 @@
     "postinstall": "cd client && npm i",
     "seed": "node ./scripts/seed.js",
     "develop": "run-p -l develop:*",
-    "develop:server": "nodemon .",
+    "develop:server": "backpack dev",
     "develop:client": "npm start --prefix client",
     "build:client": "npm run build --prefix client",
     "test": "run-s -l test:*",
@@ -34,9 +34,9 @@
     "strong-error-handler": "2.3.2"
   },
   "devDependencies": {
+    "backpack-core": "0.7.0",
     "eslint": "4.19.1",
     "eslint-config-loopback": "10.0.0",
-    "nodemon": "1.17.2",
     "npm-run-all": "4.1.2",
     "nsp": "3.2.1"
   },
