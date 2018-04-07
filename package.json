@@ -13,6 +13,7 @@
     "develop:client": "npm start --prefix client",
     "build": "run-p -l build:*",
     "build:client": "npm run build --prefix client",
+    "prebuild:server": "rimraf build/server",
     "build:server": "backpack build",
     "test": "run-s -l test:*",
     "test:lint": "eslint .",
@@ -40,7 +41,8 @@
     "eslint": "4.19.1",
     "eslint-config-loopback": "10.0.0",
     "npm-run-all": "4.1.2",
-    "nsp": "3.2.1"
+    "nsp": "3.2.1",
+    "rimraf": "2.6.2"
   },
   "repository": {
     "type": "",
