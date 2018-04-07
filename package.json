@@ -7,7 +7,7 @@
   },
   "scripts": {
     "postinstall": "cd client && npm i",
-    "seed": "node ./scripts/seed.js",
+    "db:seed": "node ./scripts/seed.js",
     "dev": "run-p -l develop:*",
     "dev:server": "backpack dev",
     "dev:client": "npm start --prefix client",

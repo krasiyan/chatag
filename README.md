@@ -54,7 +54,7 @@
     $ npm i
     $ echo REACT_APP_GOOGLE_API_KEY={{YOUR_API_KEY}} > client/.env.development.local
     $ cp .env.sample .env
-    $ npm run seed
+    $ npm run db:seed
 
 ## Online resources
 
@@ -92,6 +92,10 @@ Built the React client app (in `/build/client`):
 Built the server app (in `/build/server`):
 
     $ npm run build:server
+
+Seed the database:
+
+    $ npm run db:seed
 
 Run the full test pipeline:
 
