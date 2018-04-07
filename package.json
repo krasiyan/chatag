@@ -8,9 +8,9 @@
   "scripts": {
     "postinstall": "cd client && npm i",
     "seed": "node ./scripts/seed.js",
-    "develop": "run-p -l develop:*",
-    "develop:server": "backpack dev",
-    "develop:client": "npm start --prefix client",
+    "dev": "run-p -l develop:*",
+    "dev:server": "backpack dev",
+    "dev:client": "npm start --prefix client",
     "build": "run-p -l build:*",
     "prebuild:client": "rimraf build/client",
     "build:client": "npm run build --prefix client",
