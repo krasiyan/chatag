@@ -8,7 +8,7 @@
   "scripts": {
     "postinstall": "cd client && npm i",
     "db:seed": "node ./scripts/seed.js",
-    "dev": "run-p -l develop:*",
+    "dev": "run-p -l dev:*",
     "dev:server": "backpack dev",
     "dev:client": "npm start --prefix client",
     "build": "run-p -l build:*",
