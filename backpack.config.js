@@ -74,6 +74,14 @@ module.exports = {
         whitelist: [/^loopback-boot/],
       }),
     ];
+    config.module.exprContextCritical = false;
+    config.module.loaders = [
+      {
+        test: [/\.json$/i],
+        loader: 'json-loader',
+      },
+    ];
+
     config.plugins.push(new webpack.ContextReplacementPlugin(
       /\bloopback-boot[\/\\]lib/,
       '',
@@ -89,13 +97,6 @@ module.exports = {
         main: 'main.js',
       },
     }));
-    config.module.exprContextCritical = false;
-    config.module.loaders = [
-      {
-        test: [/\.json$/i],
-        loader: 'json-loader',
-      },
-    ];
 
     return config;
   },
