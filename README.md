@@ -69,8 +69,8 @@ Start the API server and the client's development server:
 This starts two separate HTTP servers:
 
 - `http://127.0.0.1:3000` - The loopback API server
-  - `http://127.0.0.1:3000/status` - The loopback status page
-  - `http://127.0.0.1:3000/explorer` - The loopback API expolorer
+  - `http://127.0.0.1:3000` - The loopback status page
+  - `http://127.0.0.1:3000/explorer` - The loopback API explorer
 - `http://127.0.0.1:3001` - The development React server
 
 Run the API server only:
