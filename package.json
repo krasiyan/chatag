@@ -23,6 +23,7 @@
     "test:client": "npm test --prefix client",
     "test:posttest": "npm run test:lint && nsp check"
   },
+  "pre-commit": "test:lint",
   "dependencies": {
     "async": "2.6.0",
     "compression": "1.7.2",
@@ -46,6 +47,7 @@
     "json-loader": "0.5.7",
     "npm-run-all": "4.1.2",
     "nsp": "3.2.1",
+    "pre-commit": "1.2.2",
     "rimraf": "2.6.2",
     "temp": "0.8.3"
   },
