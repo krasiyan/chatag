@@ -77,7 +77,7 @@ module.exports = {
     config.context = paths.projectRoot;
     config.externals = [
       nodeExternals({
-        whitelist: ['loopback-boot'],
+        whitelist: [/^loopback-boot/],
       }),
     ];
     config.resolve.alias = {
