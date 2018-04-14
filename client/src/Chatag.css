@@ -27,7 +27,7 @@ nav, .page-footer {
   position: relative;
   height: 180px;
   width: 200px;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   word-wrap: break-word;
   color: white;
   background: #4fc3f7;
@@ -100,8 +100,9 @@ nav, .page-footer {
 
 .tag-textarea {
   color: #fff;
+  line-height: 100% !important;
   height: 100px !important;
-  font-size: 1.5rem !important;
+  font-size: 1.2rem !important;
   border-bottom: none !important;
   padding-top: 0px !important;
   padding-bottom: 0px !important;
@@ -120,4 +121,7 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
 textarea:focus {
   border-bottom: none!important;
   box-shadow: none!important;
+}
+.character-counter {
+  float: left !important;
 }
