@@ -66,4 +66,5 @@ module.exports = function(Tag) {
 
     next();
   });
+   Tag.validatesLengthOf('message', { max: 140, message: { max: 'Message should be up to 140 characters' } });
 };
