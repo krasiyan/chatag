@@ -5,7 +5,7 @@ const fs = require('fs');
 const debugName = 'webpack';
 const debug = require('debug');
 const argv = require('yargs').argv;
-const temp = require('temp');
+const temp = require('temp').track();
 const nodeExternals = require('webpack-node-externals');
 
 const paths = {
