@@ -6,7 +6,7 @@
     "node": ">=4"
   },
   "scripts": {
-    "postinstall": "if test \"$IN_BUILD_PIPELINE\" != \"1\" ; then cd client && npm i ; fi",
+    "postinstall": "cd client && npm i",
     "db:seed": "node ./scripts/seed.js",
     "dev": "run-p -l dev:*",
     "dev:server": "backpack dev",
@@ -17,7 +17,7 @@
     "postbuild:client": "cp -r client/build build/client",
     "prebuild:server": "rimraf build/server",
     "build:server": "backpack build",
-    "postbuild:server": "cp -t build/server package.json .npmrc && cd build/server && IN_BUILD_PIPELINE=1 npm i",
+    "postbuild:server": "cp -t build/server .npmrc && cd build/server && npm i",
     "test": "run-s -l test:*",
     "test:lint": "eslint .",
     "test:client": "npm test --prefix client",
@@ -43,6 +43,7 @@
   },
   "devDependencies": {
     "backpack-core": "0.7.0",
+    "copy-pkg-json-webpack-plugin": "0.0.38",
     "eslint": "4.19.1",
     "eslint-config-loopback": "10.0.0",
     "json-loader": "0.5.7",
