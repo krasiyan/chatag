@@ -6,6 +6,7 @@ const debugName = 'webpack';
 const debug = require('debug');
 const argv = require('yargs').argv;
 const temp = require('temp');
+const nodeExternals = require('webpack-node-externals');
 
 const paths = {
   projectRoot: __dirname,
@@ -71,40 +72,14 @@ module.exports = {
       dependencyMap[boot] = path.resolve(paths.projectRoot, boot);
     });
 
-    // create the set of node_modules which we will externalise below. we skip
-    // binary modules and loopback-boot which must be bundled by webpack in order
-    // to resolve dynamic dependencies.
-    var nodeModules = new Set;
-    try {
-      fs.readdirSync(path.join(paths.projectRoot, 'node_modules'))
-        .forEach(function(dir) {
-          if (dir !== '.bin' && dir !== 'loopback-boot')
-            nodeModules.add(dir);
-        });
-    } catch (e) {}
-
-    // we define a master externals handler that takes care of externalising
-    // node_modules (largely copied from webpack-node-externals) except for
-    // loopback-boot.
-    function externalsHandler(context, request, callback) {
-      // externalise if the path begins with a node_modules name or if it's
-      // an absolute path containing /node_modules/ (the latter results from
-      // loopback component and middleware dependencies).
-      const pathBase = request.split(/[\/\\]/)[0];
-      if (nodeModules.has(pathBase))
-        return callback(null, 'commonjs ' + request);
-      var m = request.match(/[\/\\]node_modules[\/\\](.*)$/);
-      if (m)
-        return callback(null, 'commonjs ' + m[1].replace(/\\/g, '/'));
-      // otherwise internalise (bundle) the request.
-      callback();
-    };
-
     config.entry.main = './server/server.js';
     config.output.path = path.join(process.cwd(), 'build/server');
-
     config.context = paths.projectRoot;
-    config.externals = [externalsHandler];
+    config.externals = [
+      nodeExternals({
+        whitelist: ['loopback-boot'],
+      }),
+    ];
     config.resolve.alias = {
       'boot-instructions.json': instructionsFile.path,
     };
