@@ -50,7 +50,7 @@
     "nsp": "3.2.1",
     "pre-commit": "1.2.2",
     "rimraf": "2.6.2",
-    "temp": "0.8.3",
+    "virtual-module-webpack-plugin": "0.4.0",
     "webpack-node-externals": "1.7.2"
   },
   "repository": {

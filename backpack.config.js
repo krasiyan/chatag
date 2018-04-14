@@ -5,8 +5,8 @@ const fs = require('fs');
 const debugName = 'webpack';
 const debug = require('debug');
 const argv = require('yargs').argv;
-const temp = require('temp').track();
 const nodeExternals = require('webpack-node-externals');
+const VirtualModulePlugin = require('virtual-module-webpack-plugin');
 
 const paths = {
   projectRoot: __dirname,
@@ -20,7 +20,7 @@ module.exports = {
       appRootDir: paths.appRoot,
     };
     var compile = require('loopback-boot/lib/compiler');
-    var ins = compile(bootOptions);
+    var bootInstructions = compile(bootOptions);
 
     // rewrite all paths relative to the project root.
     var relative = function(p) {
@@ -33,20 +33,13 @@ module.exports = {
           item.sourceFile = relative(item.sourceFile);
       });
     };
-    relativeSourceFiles(ins.models);
-    relativeSourceFiles(ins.components);
-    var middleware = ins.middleware && ins.middleware.middleware;
-    relativeSourceFiles(middleware);
-    var bootFiles = ins.files && ins.files.boot;
+    relativeSourceFiles(bootInstructions.models);
+    relativeSourceFiles(bootInstructions.components);
+    relativeSourceFiles(bootInstructions.middleware.middleware);
+    var bootFiles = bootInstructions.files && bootInstructions.files.boot;
     if (bootFiles) {
-      bootFiles = ins.files.boot = bootFiles.map(relative);
+      bootFiles = bootInstructions.files.boot = bootFiles.map(relative);
     }
-    var instructionsFile = temp.openSync({
-      prefix: 'boot-instructions-',
-      suffix: '.json',
-    });
-    fs.writeSync(instructionsFile.fd, JSON.stringify(ins, null, '\t'));
-    fs.closeSync(instructionsFile.fd);
 
     // Construct the dependency map for loopback-boot. It resolves all of the
     // dynamic module dependencies specified by the boot instructions:
@@ -65,9 +58,9 @@ module.exports = {
             path.resolve(paths.projectRoot, item.sourceFile);
       });
     };
-    resolveSourceFiles(ins.models);
-    resolveSourceFiles(ins.components);
-    resolveSourceFiles(middleware);
+    resolveSourceFiles(bootInstructions.models);
+    resolveSourceFiles(bootInstructions.components);
+    resolveSourceFiles(bootInstructions.middleware.middleware);
     (bootFiles || []).forEach(function(boot) {
       dependencyMap[boot] = path.resolve(paths.projectRoot, boot);
     });
@@ -80,14 +73,15 @@ module.exports = {
         whitelist: [/^loopback-boot/],
       }),
     ];
-    config.resolve.alias = {
-      'boot-instructions.json': instructionsFile.path,
-    };
     config.plugins.push(new webpack.ContextReplacementPlugin(
       /\bloopback-boot[\/\\]lib/,
       '',
       dependencyMap
     ));
+    config.plugins.push(new VirtualModulePlugin({
+      moduleName: 'server/boot-instructions.json',
+      contents: bootInstructions,
+    }));
     config.module.exprContextCritical = false;
     config.module.loaders = [
       {
