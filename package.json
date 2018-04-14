@@ -26,6 +26,7 @@
   "pre-commit": "test:lint",
   "dependencies": {
     "async": "2.6.0",
+    "bcrypt": "2.0.0",
     "compression": "1.7.2",
     "cors": "2.8.4",
     "dotenv": "5.0.1",
