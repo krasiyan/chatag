@@ -46,6 +46,8 @@
     "copy-pkg-json-webpack-plugin": "0.0.38",
     "eslint": "4.19.1",
     "eslint-config-loopback": "10.0.0",
+    "eslint-plugin-json": "1.2.0",
+    "nodemon": "1.17.2",
     "json-loader": "0.5.7",
     "npm-run-all": "4.1.2",
     "nsp": "3.2.1",
