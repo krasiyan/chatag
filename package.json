@@ -7,12 +7,18 @@
   },
   "scripts": {
     "postinstall": "cd client && npm i",
-    "seed": "node ./scripts/seed.js",
-    "develop": "run-p -l develop:*",
-    "develop:server": "nodemon .",
-    "develop:client": "npm start --prefix client",
+    "db:seed": "node ./scripts/seed.js",
+    "dev": "FORCE_COLOR=1 run-p -ln dev:*",
+    "dev:server": "backpack dev",
+    "dev:client": "npm start --prefix client",
+    "build": "run-p -ln build:*",
+    "prebuild:client": "rimraf build/client",
     "build:client": "npm run build --prefix client",
-    "test": "run-s -l test:*",
+    "postbuild:client": "cp -r client/build build/client",
+    "prebuild:server": "rimraf build/server",
+    "build:server": "backpack build",
+    "postbuild:server": "cp -t build/server .npmrc && cd build/server && npm i",
+    "test": "FORCE_COLOR=1 run-s -ln test:*",
     "test:lint": "eslint .",
     "test:client": "npm test --prefix client",
     "test:posttest": "npm run test:lint && nsp check"
@@ -20,6 +26,7 @@
   "pre-commit": "test:lint",
   "dependencies": {
     "async": "2.6.0",
+    "bcrypt": "2.0.0",
     "compression": "1.7.2",
     "cors": "2.8.4",
     "dotenv": "5.0.1",
@@ -35,12 +42,17 @@
     "strong-error-handler": "2.3.2"
   },
   "devDependencies": {
+    "backpack-core": "0.7.0",
+    "copy-pkg-json-webpack-plugin": "0.0.38",
     "eslint": "4.19.1",
     "eslint-config-loopback": "10.0.0",
-    "nodemon": "1.17.2",
+    "json-loader": "0.5.7",
     "npm-run-all": "4.1.2",
     "nsp": "3.2.1",
-    "pre-commit": "1.2.2"
+    "pre-commit": "1.2.2",
+    "rimraf": "2.6.2",
+    "virtual-module-webpack-plugin": "0.4.0",
+    "webpack-node-externals": "1.7.2"
   },
   "repository": {
     "type": "",
